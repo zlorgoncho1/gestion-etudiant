@@ -26,7 +26,7 @@ public class StudentService {
         }
     }
 
-    public Student findStudent(Long id) {
+    public Student findStudent(int id) {
         return em.find(Student.class, id);
     }
 
@@ -48,7 +48,7 @@ public class StudentService {
         }
     }
 
-    public void deleteStudent(Long id) {
+    public void deleteStudent(int id) {
         Student student = em.find(Student.class, id);
         if (student != null) {
             EntityTransaction transaction = em.getTransaction();

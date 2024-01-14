@@ -11,3 +11,5 @@ app/bin
 database/data
 database/pgAdmin
 .env
+
+*.log

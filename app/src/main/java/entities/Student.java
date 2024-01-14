@@ -8,7 +8,7 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(name = "full_name", nullable = false)
     private String fullName;
@@ -34,11 +34,11 @@ public class Student {
     public Student() {
     }
     // Getters et setters pour chaque champ
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

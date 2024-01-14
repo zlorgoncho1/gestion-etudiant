@@ -6,7 +6,6 @@ import services.StudentService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serial;
 import java.io.Serializable;
@@ -21,18 +20,10 @@ public class StudentBean implements Serializable {
     private static final Logger logger = LogManager.getLogger(StudentBean.class);
     private final StudentService studentService = new StudentService();
     private Student student = new Student();
-    private Student editStudent = new Student();
     private List<Student> students;
+    private int studentId;
 
-    private Long studentId;
-
-    public Long getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
-    }
+    private String deleteIds;
 
     private void loadStudents(){
         this.students = this.studentService.getAllStudents();
@@ -55,18 +46,16 @@ public class StudentBean implements Serializable {
     }
 
     public String deleteStudent() {
-        studentService.deleteStudent(studentId);
+        String[] deleteIdsAsArray = deleteIds.split(",");
+        for (String deleteId : deleteIdsAsArray) {
+            studentService.deleteStudent(Integer.parseInt(deleteId));
+        }
         loadStudents();
+        deleteIds = null;
         return "/views/students.xhtml";
     }
 
     // Getters et setters
-    public Student getEditStudent() {
-        return student;
-    }
-    public void setEditStudent(Student student) {
-        this.student = student;
-    }
     public Student getStudent() {
         return student;
     }
@@ -76,5 +65,18 @@ public class StudentBean implements Serializable {
     public List<Student> getStudents() {
         loadStudents();
         return students;
+    }
+    public int getStudentId() {
+        return studentId;
+    }
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getDeleteIds() {
+        return deleteIds;
+    }
+    public void setDeleteIds(String deleteIds) {
+        this.deleteIds = deleteIds;
     }
 }
