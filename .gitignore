@@ -7,5 +7,6 @@ app/build
 app/bin
 
 # Other
-database
+database/data
+database/pgAdmin
 .env
