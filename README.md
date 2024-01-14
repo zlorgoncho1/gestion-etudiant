@@ -7,6 +7,7 @@ Le projet `gestion-etudiant` est un projet d'étude de groupe qui vise à créer
 ## Technologies et Outils Utilisés
 
 - **Java EE**: Avec l'utilisation de JSF, JDBC, JPA, et EJB.
+- **JZE**: `JAVA ZLORG ENVIRONMENT` pour l'environnement du projet.
 - **PostgreSQL**: Système de gestion de base de données.
 - **Log4J**: Pour la gestion des logs.
 - **JSTL**: JavaServer Pages Standard Tag Library.
