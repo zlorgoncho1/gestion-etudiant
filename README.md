@@ -64,7 +64,7 @@ DATABASE_PASSWORD=
    docker-compose up database
    ```
 
-   Une fois le service database up et prêt à recevoir des connexion, ouvrez un nouvel terminal, et importez le fichier `gestion-etudiant.sql` dans le conteneur PostgreSQL pour initialiser la base de données. Dans la commande suivante, `{DATABASE_USER}` représente le nom de la variable d'environnement `DATABASE_USER` que vous avez spécifier dans le fichier .env
+   Une fois le service database up et prêt à recevoir des connexions, ouvrez un nouvel terminal, et importez le fichier `gestion-etudiant.sql` dans le conteneur PostgreSQL pour initialiser la base de données. Dans la commande suivante, `{DATABASE_USER}` représente la valeur de la variable d'environnement `DATABASE_USER` que vous avez spécifier dans le fichier .env
 
    ```bash
    docker-compose exec database psql -U {DATABASE_USER} -d gestion-etudiant -f gestion-etudiant.sql
