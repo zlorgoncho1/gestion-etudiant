@@ -54,7 +54,7 @@ ALTER TABLE public.students ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 --
 
 COPY public.students (id, full_name, email, phone, address) FROM stdin;
-15      Papa Matar Diop pamatardiop1@gmail.com  769001942       N°8228, Rue SC 153
+16	Papa Matar Diop	pamatardiop1@gmail.com	769001942	N°8228, Rue SC 153
 \.
 
 
@@ -62,7 +62,7 @@ COPY public.students (id, full_name, email, phone, address) FROM stdin;
 -- Name: students_id_seq; Type: SEQUENCE SET; Schema: public; Owner: zlorg
 --
 
-SELECT pg_catalog.setval('public.students_id_seq', 15, true);
+SELECT pg_catalog.setval('public.students_id_seq', 16, true);
 
 
 --
@@ -76,3 +76,4 @@ ALTER TABLE ONLY public.students
 --
 -- PostgreSQL database dump complete
 --
+
