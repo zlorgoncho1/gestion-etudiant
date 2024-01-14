@@ -24,7 +24,6 @@ services:
       - ${PGADMIN_MAP_PORT}:${PGADMIN_SERVER_PORT}
     volumes:
       - ./database/pgadmin:/var/lib/pgadmin
-      - ./sql:/sql
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
@@ -37,6 +36,11 @@ services:
       dockerfile: Dockerfile
     container_name: jze
     working_dir: /home/app
+    environment:
+      DATABASE_SERVER_PORT: ${DATABASE_SERVER_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
     volumes:
       - .:/home/app
     ports:
