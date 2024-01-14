@@ -61,13 +61,19 @@ DATABASE_PASSWORD=
 3. **Démarrage de la Base de Données** :
 
    ```bash
-   docker compose up -d database
+   docker-compose up -d database
+   ```
+
+   Une fois le service database up et prête à recevoir des connexions, créer la base de donnée si elle n'existe pas encore.
+
+   ```bash
+   docker-compose exec database createdb -U {YOUR_DATABASE_USERNAME} gestion-etudiant
    ```
 
    Importez le fichier `gestion-etudiant.sql` dans le conteneur PostgreSQL pour initialiser la base de données.
 
    ```bash
-   docker exec -it database psql -U {YOUR_DATABASE_USERNAME} -d gestion-etudiant -f gestion-etudiant.sql
+   docker-compose exec database psql -U {YOUR_DATABASE_USERNAME} -d gestion-etudiant -f gestion-etudiant.sql
    ```
 
 ## Démarrage du Projet
@@ -75,8 +81,8 @@ DATABASE_PASSWORD=
 1. **Lancer les Services** :
    Après avoir initialisé la base de données, lancez les autres services :
    ```bash
-   docker compose stop database
-   docker compose up
+   docker-compose stop database
+   docker-compose up
    ```
 2. **Accès à l'Application** :
    Ouvrez votre navigateur et accédez à `localhost:8888/app/views/students.xhtml` pour utiliser l'application.
