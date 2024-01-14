@@ -1,0 +1,6 @@
+.idea
+.gradle
+app/build
+app/bin
+.gitignore
+template.env

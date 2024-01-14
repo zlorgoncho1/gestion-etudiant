@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  database:
+    image: postgres:16
+    container_name: database
+    working_dir: /sql
+    volumes:
+      - ./database/data:/var/lib/postgresql/data/pgdata
+      - ./database/sql:/sql
+    ports:
+      - ${DATABASE_MAP_PORT}:${DATABASE_SERVER_PORT}
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    restart: always
+
+  dba:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    ports:
+      - ${PGADMIN_MAP_PORT}:${PGADMIN_SERVER_PORT}
+    volumes:
+      - ./database/pgadmin:/var/lib/pgadmin
+      - ./sql:/sql
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    depends_on:
+      - database
+
+  jze:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jze
+    working_dir: /home/app
+    volumes:
+      - .:/home/app
+    ports:
+      - ${TOMCAT_MAP_PORT}:${TOMCAT_SERVER_PORT}
+    restart: always
+    depends_on:
+      - dba
