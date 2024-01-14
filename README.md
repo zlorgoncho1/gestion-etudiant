@@ -64,10 +64,16 @@ DATABASE_PASSWORD=
    docker-compose up -d database
    ```
 
+   Une fois la base de donnée up et prête à recevoir des connexions, créer la base de donnée si elle n'existe pas encore.
+
+   ```bash
+   docker-compose exec database createdb -U {YOUR_DATABASE_USERNAME} gestion-etudiant
+   ```
+
    Importez le fichier `gestion-etudiant.sql` dans le conteneur PostgreSQL pour initialiser la base de données.
 
    ```bash
-   docker-compose exec -it database psql -U {YOUR_DATABASE_USERNAME} -d gestion-etudiant -f gestion-etudiant.sql
+   docker-compose exec database psql -U {YOUR_DATABASE_USERNAME} -d gestion-etudiant -f gestion-etudiant.sql
    ```
 
 ## Démarrage du Projet
